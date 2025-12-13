@@ -1,0 +1,212 @@
+/* Import font modern */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+/* ===================================================
+   ROOT COLOR PALETTE — Modern Blue Gradient
+   =================================================== */
+:root {
+  --bg-main: #e8edf5; 
+  --card-bg: linear-gradient(135deg, #ffffff 0%, #f2f6ff 100%);
+  --chatbox-bg: #f6f8fc;
+
+  --user-msg-bg: #2563eb; /* Blue primary */
+  --bot-msg-bg: #e3e8f0;
+
+  --text-dark: #1e293b;
+  --text-light: #ffffff;
+
+  --input-bg: #ffffff;
+  --input-border: #cbd5e1;
+
+  --border: #d4d9e3;
+  --shadow: rgba(0, 0, 0, 0.12);
+}
+
+/* ===================================================
+   GLOBAL STYLES
+   =================================================== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 30px; /* Margin luar kartu */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ===================================================
+   MAIN CONTAINER (Chat Card)
+   =================================================== */
+.container {
+  width: 100%;
+  max-width: 1200px; /* ♥ Lebar premium */
+  height: 92vh;      
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow: 0 12px 35px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ===================================================
+   HEADER
+   =================================================== */
+h1 {
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1e40af; /* Biru elegan */
+  background: var(--card-bg); /* FIXED untuk dark mode */
+  border-bottom: 1px solid var(--border);
+}
+
+
+/* ===================================================
+   CHAT BOX
+   =================================================== */
+.chat-box {
+  flex-grow: 1;
+  padding: 20px;
+  background: var(--chatbox-bg);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Scrollbar */
+.chat-box::-webkit-scrollbar { width: 8px; }
+.chat-box::-webkit-scrollbar-thumb {
+  background-color: #c3cddb;
+  border-radius: 10px;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Message Bubble */
+.message {
+  padding: 14px 20px;
+  border-radius: 18px;
+  max-width: 75%;
+  line-height: 1.55;
+  font-size: 15px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+/* User Message */
+.message.user {
+  background: var(--user-msg-bg);
+  color: var(--text-light);
+  border-bottom-right-radius: 6px;
+  align-self: flex-end;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.25);
+}
+
+/* Bot Message */
+.message.bot {
+  background: var(--bot-msg-bg);
+  color: var(--text-dark);
+  border-bottom-left-radius: 6px;
+  align-self: flex-start;
+}
+
+/* ===================================================
+   INPUT AREA
+   =================================================== */
+form {
+  display: flex;
+  gap: 10px;
+  padding: 18px;
+  background: var(--card-bg); /* Sebelumnya white, ganti ke var */
+  border-top: 1px solid var(--border);
+}
+
+/* Input Text */
+input[type="text"] {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 25px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  font-size: 15px;
+  color: var(--text-dark);
+  transition: 0.25s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+  outline: none;
+}
+
+/* Send Button */
+button {
+  padding: 12px 22px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.25);
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* ===================================================
+   DARK MODE THEME
+   =================================================== */
+[data-theme="dark"] {
+  --bg-main: #0d1117;
+  --card-bg: linear-gradient(135deg, #1a1f26 0%, #0f141a 100%);
+  --chatbox-bg: #161b22;
+
+  --user-msg-bg: #3b82f6;
+  --bot-msg-bg: #262c36;
+
+  --text-dark: #e2e8f0;
+  --text-light: #ffffff;
+
+  --input-bg: #1f242d;
+  --input-border: #3b4450;
+
+  --border: #2b3240;
+}
+
+/* Tombol Tema */
+.theme-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  padding: 10px 16px;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.3);
+}
+
+.theme-btn:hover {
+  background: #1d4ed8;
+}
+

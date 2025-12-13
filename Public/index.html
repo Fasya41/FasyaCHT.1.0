@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fasya AI Chatbot</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>FasyaCHT</h1>
+
+      <!-- Tombol Dark / Light Mode -->
+      <button id="themeToggle" class="theme-btn">
+        🌙 Dark Mode
+      </button>
+    </header>
+
+    <!-- Chat Box -->
+    <div id="chat-box" class="chat-box"></div>
+
+    <!-- Chat Input -->
+    <form id="chat-form">
+      <input 
+        type="text" 
+        id="user-input" 
+        placeholder="Type your message..." 
+        autocomplete="off" 
+        required 
+      />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
