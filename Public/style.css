@@ -1,15 +1,17 @@
-/* Import font modern */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+/* ===================================================
+   IMPORT FONT
+   =================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 /* ===================================================
-   ROOT COLOR PALETTE — Modern Blue Gradient
+   ROOT COLOR PALETTE — MODERN BLUE
    =================================================== */
 :root {
-  --bg-main: #e8edf5; 
+  --bg-main: #e8edf5;
   --card-bg: linear-gradient(135deg, #ffffff 0%, #f2f6ff 100%);
   --chatbox-bg: #f6f8fc;
 
-  --user-msg-bg: #2563eb; /* Blue primary */
+  --user-msg-bg: #2563eb;
   --bot-msg-bg: #e3e8f0;
 
   --text-dark: #1e293b;
@@ -23,14 +25,19 @@
 }
 
 /* ===================================================
-   GLOBAL STYLES
+   GLOBAL
    =================================================== */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-main);
+  background: var(--bg-main);
   color: var(--text-dark);
   margin: 0;
-  padding: 30px; /* Margin luar kartu */
+  padding: 30px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,15 +45,17 @@ body {
 }
 
 /* ===================================================
-   MAIN CONTAINER (Chat Card)
+   MAIN CONTAINER
    =================================================== */
 .container {
   width: 100%;
-  max-width: 1200px; /* ♥ Lebar premium */
-  height: 92vh;      
+  max-width: 1200px;
+  height: 92vh;
+
   background: var(--card-bg);
   border-radius: 24px;
   box-shadow: 0 12px 35px var(--shadow);
+
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -55,39 +64,70 @@ body {
 /* ===================================================
    HEADER
    =================================================== */
-h1 {
-  text-align: center;
-  padding: 20px;
+.header {
+  position: relative;
+}
+
+.header h1 {
   margin: 0;
+  padding: 20px;
+
+  text-align: center;
   font-size: 24px;
   font-weight: 600;
-  color: #1e40af; /* Biru elegan */
-  background: var(--card-bg); /* FIXED untuk dark mode */
+  color: #1e40af;
+
+  background: var(--card-bg);
   border-bottom: 1px solid var(--border);
 }
 
+/* Theme Button */
+.theme-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+
+  padding: 10px 16px;
+  background: #2563eb;
+  color: #fff;
+
+  font-size: 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+
+  transition: 0.25s ease;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.theme-btn:hover {
+  background: #1d4ed8;
+}
 
 /* ===================================================
    CHAT BOX
    =================================================== */
 .chat-box {
-  flex-grow: 1;
+  flex: 1;
   padding: 20px;
   background: var(--chatbox-bg);
   overflow-y: auto;
+
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
 /* Scrollbar */
-.chat-box::-webkit-scrollbar { width: 8px; }
+.chat-box::-webkit-scrollbar {
+  width: 8px;
+}
 .chat-box::-webkit-scrollbar-thumb {
-  background-color: #c3cddb;
+  background: #c3cddb;
   border-radius: 10px;
 }
 
-/* Fade Animation */
+/* Message Animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -95,83 +135,237 @@ h1 {
 
 /* Message Bubble */
 .message {
-  padding: 14px 20px;
-  border-radius: 18px;
   max-width: 75%;
-  line-height: 1.55;
+  padding: 14px 20px;
+
+  border-radius: 18px;
   font-size: 15px;
+  line-height: 1.55;
+
   animation: fadeIn 0.25s ease-out;
 }
 
 /* User Message */
 .message.user {
+  align-self: flex-end;
   background: var(--user-msg-bg);
   color: var(--text-light);
+
   border-bottom-right-radius: 6px;
-  align-self: flex-end;
   box-shadow: 0 3px 10px rgba(37, 99, 235, 0.25);
 }
 
 /* Bot Message */
 .message.bot {
+  align-self: flex-start;
   background: var(--bot-msg-bg);
   color: var(--text-dark);
+
   border-bottom-left-radius: 6px;
-  align-self: flex-start;
 }
 
 /* ===================================================
-   INPUT AREA
+   INPUT AREA (AUTO EXPAND LIKE CHATGPT)
    =================================================== */
 form {
   display: flex;
+  align-items: flex-end; /* penting agar send sejajar bawah */
   gap: 10px;
+
   padding: 18px;
-  background: var(--card-bg); /* Sebelumnya white, ganti ke var */
+  background: var(--card-bg);
   border-top: 1px solid var(--border);
 }
 
-/* Input Text */
-input[type="text"] {
+/* Input Container */
+.input-container {
   flex: 1;
-  padding: 12px 16px;
-  border-radius: 25px;
+
   background: var(--input-bg);
   border: 1px solid var(--input-border);
-  font-size: 15px;
-  color: var(--text-dark);
+  border-radius: 25px;
+
+  padding: 10px 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
   transition: 0.25s ease;
 }
 
-input[type="text"]:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+.input-container input[type="text"] {
+  border: none;
+  background: transparent;
+  padding: 4px 0;
+
+  font-size: 15px;
+  color: var(--text-dark);
+  outline: none;
+}
+
+
+/* File Preview Area */
+.file-preview {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* File Chip */
+.file-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 14px;
+  min-height: 42px;
+
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+  border: 1px solid #c7d2fe;
+
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1e293b;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.file-chip span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.file-chip span small {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.file-chip button {
+  margin-left: auto;
+
+  background: transparent;
+  border: none;
+
+  font-size: 16px;
+  color: #64748b;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.file-chip button:hover {
+  color: #ef4444;
+}
+
+
+/* Input Row */
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Text Input */
+.input-row input[type="text"] {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  color: var(--text-dark);
   outline: none;
 }
 
 /* Send Button */
-button {
-  padding: 12px 22px;
+.send-btn {
+  width: 80px;
+  height: 38px;
+  border-radius: 20%;
   background: #2563eb;
   color: #fff;
   border: none;
-  border-radius: 25px;
-  font-weight: 500;
   cursor: pointer;
-  transition: 0.25s ease;
-  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.2s ease;
+  align-self: center;
 }
 
-button:hover {
-  background-color: #1d4ed8;
-}
-
-button:active {
-  transform: scale(0.97);
+.send-btn:hover {
+  background: #1d4ed8;
 }
 
 /* ===================================================
-   DARK MODE THEME
+   PLUS BUTTON & ATTACH MENU
+   =================================================== */
+.plus-wrapper {
+  position: relative;
+}
+
+.plus-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 26px;
+  font-weight: 300;
+  border: none;
+  cursor: pointer;
+}
+
+.plus-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Attach Menu */
+.attach-menu {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+
+  width: 170px;
+  padding: 6px;
+
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 30;
+}
+
+.attach-menu label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 500;
+
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.attach-menu label:hover {
+  background: #f1f5f9;
+}
+
+/* ===================================================
+   DARK MODE
    =================================================== */
 [data-theme="dark"] {
   --bg-main: #0d1117;
@@ -190,23 +384,26 @@ button:active {
   --border: #2b3240;
 }
 
-/* Tombol Tema */
-.theme-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  padding: 10px 16px;
-  background: #2563eb;
-  color: white;
-  font-size: 14px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.25s ease;
-  box-shadow: 0 2px 8px rgba(37,99,235,0.3);
+/* Dark Mode Attach */
+[data-theme="dark"] .attach-menu {
+  background: #1e293b;
 }
 
-.theme-btn:hover {
-  background: #1d4ed8;
+[data-theme="dark"] .attach-menu label:hover {
+  background: #334155;
+}
+
+[data-theme="dark"] .file-chip {
+  background: #334155;
+}
+
+[data-theme="dark"] .file-chip {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 1px solid #334155;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .file-chip button {
+  color: #94a3b8;
 }
 

@@ -15,26 +15,61 @@
     <!-- Header -->
     <header class="header">
       <h1>FasyaCHT</h1>
-
-      <!-- Tombol Dark / Light Mode -->
-      <button id="themeToggle" class="theme-btn">
-        🌙 Dark Mode
-      </button>
+      <button id="themeToggle" class="theme-btn">🌙 Dark Mode</button>
     </header>
 
     <!-- Chat Box -->
     <div id="chat-box" class="chat-box"></div>
 
     <!-- Chat Input -->
-    <form id="chat-form">
-      <input 
-        type="text" 
-        id="user-input" 
-        placeholder="Type your message..." 
-        autocomplete="off" 
-        required 
-      />
-      <button type="submit">Send</button>
+    <form id="chat-form" class="chat-form">
+
+      <!-- INPUT CONTAINER (AUTO HEIGHT) -->
+      <div class="input-container">
+
+        <!-- ATTACHMENT PREVIEW -->
+        <div id="file-preview" class="file-preview"></div>
+
+        <!-- INPUT ROW -->
+        <div class="input-row">
+
+          <!-- PLUS BUTTON -->
+          <div class="plus-wrapper">
+            <button type="button" id="plusBtn" class="plus-btn">+</button>
+
+            <div id="attachMenu" class="attach-menu">
+              <label>
+                📷 Image
+                <input type="file" accept="image/*" hidden>
+              </label>
+              <label>
+                📄 Document
+                <input type="file" accept=".pdf,.doc,.docx,.txt" hidden>
+              </label>
+              <label>
+                🎤 Audio
+                <input type="file" accept="audio/*" hidden>
+              </label>
+              <label>
+                🎥 Video
+                <input type="file" accept="video/*" hidden>
+              </label>
+            </div>
+          </div>
+
+          <!-- TEXT INPUT -->
+          <input
+            type="text"
+            id="user-input"
+            placeholder="Ask anything"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <!-- SEND BUTTON (TETAP DI LUAR) -->
+      <button type="submit" class="send-btn">Send</button>
+
     </form>
   </div>
 
